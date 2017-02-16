@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="io.github.rakshakhegde.diffre.MainActivity">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="32dp"
+			android:gravity="center"
+			android:text="@string/api_1"
+			android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+		<io.github.rakshakhegde.diffre.DiffreViewApi1
+			android:id="@+id/fillShapeViewApi1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginTop="8dp"
+			android:layerType="software"/>
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="32dp"
+			android:gravity="center"
+			android:text="@string/api_19"
+			android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+		<io.github.rakshakhegde.diffre.DiffreViewApi19
+			android:id="@+id/fillShapeViewApi19"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginTop="8dp"/>
+	</LinearLayout>
+
+	<SeekBar
+		android:id="@+id/seekBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:padding="32dp"
+		android:progress="60"/>
+
+</FrameLayout>

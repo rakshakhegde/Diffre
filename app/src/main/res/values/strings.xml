@@ -1,0 +1,5 @@
+<resources>
+	<string name="app_name">Diffre</string>
+	<string name="api_1">API 1+ (No anti-aliasing)</string>
+	<string name="api_19">API 19+</string>
+</resources>

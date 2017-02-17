@@ -1,7 +1,6 @@
 package io.github.rakshakhegde.diffre;
 
 import android.content.Context;
-import android.graphics.Path;
 import android.graphics.Region;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -16,36 +15,29 @@ import android.util.AttributeSet;
  */
 public class DiffreViewApi1 extends DiffreView {
 
+	final Region textRegion = new Region();
+	final Region progressRegion = new Region();
+	final Region region = new Region();
+
 	public DiffreViewApi1(Context context) {
 		this(context, null);
 	}
-
 	public DiffreViewApi1(Context context, @Nullable AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
-
 	public DiffreViewApi1(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 	}
 
-	final Region textRegion = new Region();
-	final Path progressPath = new Path();
-	final Region progressRegion = new Region();
-	final Region progressStrokeRegion = new Region();
-	final Region region = new Region();
-
 	@Override
 	public void computeCroppedProgressPath() {
 
-		region.set(0, 0, width, height);
+		region.set(0, 0, (int) (width * percent), height);
 
-		progressStrokeRegion.setPath(progressStrokePath, region);
-
-		setRectPath(progressPath, 0, 0, width * percent, height);
-		progressRegion.setPath(progressPath, progressStrokeRegion); // INTERSECT
+		progressRegion.setPath(progressStrokePath, region); // INTERSECT
 
 		textRegion.setPath(textPath, region);
-		progressRegion.op(textRegion, Region.Op.DIFFERENCE);
+		progressRegion.op(textRegion, Region.Op.DIFFERENCE); // DIFFERENCE
 
 		croppedProgressPath.rewind();
 		progressRegion.getBoundaryPath(croppedProgressPath);
@@ -54,7 +46,7 @@ public class DiffreViewApi1 extends DiffreView {
 	@Override
 	public void computeCroppedTextPath() {
 		region.set((int) (width * percent), 0, width, height);
-		textRegion.setPath(textPath, region);
+		textRegion.setPath(textPath, region); // INTERSECT
 		croppedTextPath.rewind();
 		textRegion.getBoundaryPath(croppedTextPath);
 	}

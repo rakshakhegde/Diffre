@@ -25,7 +25,10 @@ public abstract class DiffreView extends View {
 
 	final int COLOR_ORANGE = 0xFFFD9727;
 	final String textString = "16:00 - 16:30";
-
+	final Path textPath = new Path();
+	final Path croppedProgressPath = new Path();
+	final Path croppedTextPath = new Path();
+	private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	int width;
 	int height;
 	int textWidth;
@@ -33,14 +36,8 @@ public abstract class DiffreView extends View {
 	float radius;
 	float percent = 0.1F;
 	int textPadding;
-
-	private Rect textBounds = new Rect();
-	private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-	final Path textPath = new Path();
 	Path progressStrokePath = new Path();
-	final Path croppedProgressPath = new Path();
-	final Path croppedTextPath = new Path();
+	private Rect textBounds = new Rect();
 
 
 	public DiffreView(Context context) {
@@ -64,6 +61,19 @@ public abstract class DiffreView extends View {
 		radius = res.getDimensionPixelSize(R.dimen.paintRadius);
 
 		paint.setTextAlign(Paint.Align.CENTER);
+	}
+
+	public static Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
+		Path roundRectPath = new Path();
+		rectF.set(left, top, right, bottom);
+		roundRectPath.addRoundRect(rectF, radius, radius, Path.Direction.CW);
+		return roundRectPath;
+	}
+
+	public static void setRectPath(Path path, float left, float top, float right, float bottom) {
+		rectF.set(left, top, right, bottom);
+		path.rewind();
+		path.addRect(rectF, Path.Direction.CW);
 	}
 
 	@Override
@@ -116,18 +126,5 @@ public abstract class DiffreView extends View {
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawPath(croppedProgressPath, paint);
 		canvas.drawPath(croppedTextPath, paint);
-	}
-
-	public static Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
-		Path roundRectPath = new Path();
-		RectF rect = new RectF(left, top, right, bottom);
-		roundRectPath.addRoundRect(rect, radius, radius, Path.Direction.CW);
-		return roundRectPath;
-	}
-
-	public static void setRectPath(Path path, float left, float top, float right, float bottom) {
-		rectF.set(left, top, right, bottom);
-		path.rewind();
-		path.addRect(rectF, Path.Direction.CW);
 	}
 }

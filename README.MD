@@ -1,8 +1,6 @@
 # Diffre
 *pronounced - Differ*
 
-[Stack OverFlow](http://stackoverflow.com/questions/42246509/fill-shape-with-text-with-two-different-color)
-
 Diffre is a sample Android application that shows how to change text color based on background.
 
 This sample application exposes two possible implementations:
@@ -19,6 +17,8 @@ This sample application exposes two possible implementations:
 <p align="center">
 <img alt="demo gif" src="ART/screenshot.png" width=300 />
 </p>
+
+This project was built because of this [Stack OverFlow question](http://stackoverflow.com/questions/42246509/fill-shape-with-text-with-two-different-color)
 
 ## Limitations
 * Even though Region API works from API 1+, many devices I've encountered don't render it unless `layerType="software"` is specified. So this effectively makes Region API useful only from API 11.

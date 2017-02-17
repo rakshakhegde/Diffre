@@ -22,6 +22,8 @@ This sample application exposes two possible implementations:
 
 This project was built because of this [Stack OverFlow question](http://stackoverflow.com/questions/42246509/fill-shape-with-text-with-two-different-color)
 
+Check out this other library I wrote: [LastPagerAdapter](https://github.com/rakshakhegde/LastPagerAdapter)
+
 ## Limitations
 * Even though Region API works from API 1+, many devices I've encountered don't render it unless `layerType="software"` is specified. So this effectively makes Region API useful only from API 11.
 

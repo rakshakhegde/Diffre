@@ -1,6 +1,16 @@
 # Diffre
+*pronounced - Differ*
 
 [Stack OverFlow](http://stackoverflow.com/questions/42246509/fill-shape-with-text-with-two-different-color)
+
+Diffre is a sample Android application that shows how to change text color based on background.
+
+This sample application exposes two possible implementations:
+
+* A `Path`-based implementation that requires API level 19
+* A `Region`-based implementation that requires API level 1
+
+*Heavily influenced from [Romain Guy's Medium article](https://medium.com/@romainguy/a-better-underline-for-android-90ba3a2e4fb#.v4xblse45)*
 
 <p align="center">
 <img alt="demo gif" src="ART/demo.gif" width=300 />

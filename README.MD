@@ -1,3 +1,5 @@
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=58a68543ae672601008b2e45&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58a68543ae672601008b2e45/build/latest?branch=master)
+
 # Diffre
 *pronounced - Differ*
 

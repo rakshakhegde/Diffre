@@ -21,23 +21,24 @@ import android.view.View;
  */
 public abstract class DiffreView extends View {
 
-	private static RectF rectF = new RectF();
+	int width;
+	int height;
+	float percent = 0.1F;
+	Path progressStrokePath = new Path();
 
-	final int COLOR_ORANGE = 0xFFFD9727;
-	final String textString = "16:00 - 16:30";
 	final Path textPath = new Path();
 	final Path croppedProgressPath = new Path();
 	final Path croppedTextPath = new Path();
+
+
+	private static RectF rectF = new RectF();
+
+	private final int COLOR_ORANGE = 0xFFFD9727;
+	private final String textString = "16:00 – 16:30";
 	private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	int width;
-	int height;
-	int textWidth;
-	int textHeight;
-	float radius;
-	float percent = 0.1F;
-	int textPadding;
-	Path progressStrokePath = new Path();
-	private Rect textBounds = new Rect();
+	private final float radius;
+	private final int textPadding;
+	private final Rect textBounds = new Rect();
 
 
 	public DiffreView(Context context) {
@@ -80,14 +81,14 @@ public abstract class DiffreView extends View {
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		paint.getTextBounds(textString, 0, textString.length(), textBounds);
 
-		textWidth = textBounds.width();
-		textHeight = textBounds.height();
+		final int textWidth = textBounds.width();
+		final int textHeight = textBounds.height();
 
 		width = textWidth + textPadding;
 		height = textHeight + textPadding;
 
-		int cx = width / 2;
-		int cy = (height + textHeight) / 2;
+		final int cx = width / 2;
+		final int cy = (height + textHeight) / 2;
 
 		paint.getTextPath(textString, 0, textString.length(), cx, cy, textPath);
 

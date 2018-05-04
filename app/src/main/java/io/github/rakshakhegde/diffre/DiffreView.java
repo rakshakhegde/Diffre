@@ -17,7 +17,6 @@ import android.view.View;
  * Heavily inspired from Romain Guy's Medium article on "How to underline text":
  * https://medium.com/google-developers/a-better-underline-for-android-90ba3a2e4fb#.hnv0zcm2h
  * <p>
- * Created by rakshakhegde on 16/02/17.
  */
 public abstract class DiffreView extends View {
 

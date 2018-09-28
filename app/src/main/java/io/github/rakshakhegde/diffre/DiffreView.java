@@ -18,7 +18,7 @@ import android.view.View;
  * https://medium.com/google-developers/a-better-underline-for-android-90ba3a2e4fb#.hnv0zcm2h
  * <p>
  */
-public abstract class DiffreView extends View {
+public class DiffreView extends View {
 
 	int width;
 	int height;
@@ -38,6 +38,7 @@ public abstract class DiffreView extends View {
 	private final float radius;
 	private final int textPadding;
 	private final Rect textBounds = new Rect();
+	private final Path progressPath = new Path();
 
 
 	public DiffreView(Context context) {
@@ -111,9 +112,15 @@ public abstract class DiffreView extends View {
 		computeCroppedTextPath();
 	}
 
-	public abstract void computeCroppedProgressPath();
+	public void computeCroppedProgressPath() {
+		setRectPath(progressPath, 0, 0, width * percent, height);
+		croppedProgressPath.op(progressPath, textPath, Path.Op.DIFFERENCE);
+		croppedProgressPath.op(progressStrokePath, Path.Op.INTERSECT);
+	}
 
-	public abstract void computeCroppedTextPath();
+	public void computeCroppedTextPath() {
+		croppedTextPath.op(textPath, progressPath, Path.Op.DIFFERENCE);
+	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {

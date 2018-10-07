@@ -1,41 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
 	tools:context="io.github.rakshakhegde.diffre.MainActivity">
 
-	<LinearLayout
+	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:orientation="vertical">
+		android:layout_marginTop="32dp"
+		android:gravity="center"
+		android:text="@string/api_19"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		android:textSize="24sp" />
 
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="32dp"
-			android:gravity="center"
-			android:text="@string/api_19"
-			android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-			android:textSize="24sp" />
+	<io.github.rakshakhegde.diffre.DiffreView
+		android:id="@+id/fillShapeView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:layout_marginTop="32dp" />
 
-		<io.github.rakshakhegde.diffre.DiffreView
-			android:id="@+id/fillShapeView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:layout_marginTop="32dp"/>
-
-		<SeekBar
-			android:id="@+id/seekBar"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="bottom"
-			android:layout_marginTop="80dp"
-			android:layout_marginLeft="16dp"
-			android:layout_marginRight="16dp"
-			android:progress="60"/>
-	</LinearLayout>
-
-</FrameLayout>
+	<SeekBar
+		android:id="@+id/seekBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="80dp"
+		android:layout_marginRight="16dp"
+		android:progress="60" />
+</LinearLayout>

@@ -70,19 +70,6 @@ public class DiffreView extends View {
 		paint.setStrokeWidth(strokeWidth);
 	}
 
-	public static Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
-		Path roundRectPath = new Path();
-		rectF.set(left, top, right, bottom);
-		roundRectPath.addRoundRect(rectF, radius, radius, Path.Direction.CW);
-		return roundRectPath;
-	}
-
-	public static void setRectPath(Path path, float left, float top, float right, float bottom) {
-		rectF.set(left, top, right, bottom);
-		path.rewind();
-		path.addRect(rectF, Path.Direction.CW);
-	}
-
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		paint.getTextBounds(textString, 0, textString.length(), textBounds);
@@ -104,13 +91,6 @@ public class DiffreView extends View {
 
 		// Adding 1 to prevent artifacts
 		setMeasuredDimension(width + 1, height + 1);
-	}
-
-	public void setProgress(final float _percent) {
-		assert _percent >= 0F && _percent <= 1F;
-		percent = _percent;
-		computePaths();
-		invalidate();
 	}
 
 	private void computePaths() {
@@ -139,5 +119,25 @@ public class DiffreView extends View {
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawPath(croppedProgressPath, paint);
 		canvas.drawPath(croppedTextPath, paint);
+	}
+
+	public void setProgress(final float _percent) {
+		assert _percent >= 0F && _percent <= 1F;
+		percent = _percent;
+		computePaths();
+		invalidate();
+	}
+
+	public static Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
+		Path roundRectPath = new Path();
+		rectF.set(left, top, right, bottom);
+		roundRectPath.addRoundRect(rectF, radius, radius, Path.Direction.CW);
+		return roundRectPath;
+	}
+
+	public static void setRectPath(Path path, float left, float top, float right, float bottom) {
+		rectF.set(left, top, right, bottom);
+		path.rewind();
+		path.addRect(rectF, Path.Direction.CW);
 	}
 }

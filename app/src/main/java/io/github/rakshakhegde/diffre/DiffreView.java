@@ -21,7 +21,7 @@ import android.view.View;
  */
 public class DiffreView extends View {
 
-	private static final RectF rectF = new RectF();
+	private final RectF rectF = new RectF();
 
 	private int width;
 	private int height;
@@ -98,13 +98,13 @@ public class DiffreView extends View {
 		computeCroppedTextPath();
 	}
 
-	public void computeCroppedProgressPath() {
+	private void computeCroppedProgressPath() {
 		setRectPath(progressPath, 0, 0, width * percent, height);
 		croppedProgressPath.op(progressPath, textPath, Path.Op.DIFFERENCE);
 		croppedProgressPath.op(progressStrokePath, Path.Op.INTERSECT);
 	}
 
-	public void computeCroppedTextPath() {
+	private void computeCroppedTextPath() {
 		croppedTextPath.op(textPath, progressPath, Path.Op.DIFFERENCE);
 	}
 
@@ -128,14 +128,14 @@ public class DiffreView extends View {
 		invalidate();
 	}
 
-	public static Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
+	private Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
 		Path roundRectPath = new Path();
 		rectF.set(left, top, right, bottom);
 		roundRectPath.addRoundRect(rectF, radius, radius, Path.Direction.CW);
 		return roundRectPath;
 	}
 
-	public static void setRectPath(Path path, float left, float top, float right, float bottom) {
+	private void setRectPath(Path path, float left, float top, float right, float bottom) {
 		rectF.set(left, top, right, bottom);
 		path.rewind();
 		path.addRect(rectF, Path.Direction.CW);

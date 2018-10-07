@@ -26,7 +26,7 @@ public class DiffreView extends View {
 	private int width;
 	private int height;
 	private float percent = 0.1F;
-	private Path progressStrokePath = new Path();
+	private Path strokePath = new Path();
 
 	private final Path textPath = new Path();
 	private final Path croppedProgressPath = new Path();
@@ -85,7 +85,7 @@ public class DiffreView extends View {
 
 		paint.getTextPath(textString, 0, textString.length(), cx, cy, textPath);
 
-		progressStrokePath = getRoundRectPath(0, 0, width, height, radius);
+		strokePath = getRoundRectPath(0, 0, width, height, radius);
 
 		computePaths();
 
@@ -101,7 +101,7 @@ public class DiffreView extends View {
 	private void computeCroppedProgressPath() {
 		setRectPath(progressPath, 0, 0, width * percent, height);
 		croppedProgressPath.op(progressPath, textPath, Path.Op.DIFFERENCE);
-		croppedProgressPath.op(progressStrokePath, Path.Op.INTERSECT);
+		croppedProgressPath.op(strokePath, Path.Op.INTERSECT);
 	}
 
 	private void computeCroppedTextPath() {
@@ -114,7 +114,7 @@ public class DiffreView extends View {
 
 		paint.setColor(COLOR_ORANGE);
 		paint.setStyle(Paint.Style.STROKE);
-		canvas.drawPath(progressStrokePath, paint);
+		canvas.drawPath(strokePath, paint);
 
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawPath(croppedProgressPath, paint);

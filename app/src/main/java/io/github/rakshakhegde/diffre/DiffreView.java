@@ -8,6 +8,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -121,8 +122,7 @@ public class DiffreView extends View {
 		canvas.drawPath(croppedTextPath, paint);
 	}
 
-	public void setProgress(final float _percent) {
-		assert _percent >= 0F && _percent <= 1F;
+	public void setProgress(@FloatRange(from = 0, to = 1) final float _percent) {
 		percent = _percent;
 		computePaths();
 		invalidate();

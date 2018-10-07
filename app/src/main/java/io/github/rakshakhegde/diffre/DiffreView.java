@@ -21,17 +21,16 @@ import android.view.View;
  */
 public class DiffreView extends View {
 
-	int width;
-	int height;
-	float percent = 0.1F;
-	Path progressStrokePath = new Path();
+	private static final RectF rectF = new RectF();
 
-	final Path textPath = new Path();
-	final Path croppedProgressPath = new Path();
-	final Path croppedTextPath = new Path();
+	private int width;
+	private int height;
+	private float percent = 0.1F;
+	private Path progressStrokePath = new Path();
 
-
-	private static RectF rectF = new RectF();
+	private final Path textPath = new Path();
+	private final Path croppedProgressPath = new Path();
+	private final Path croppedTextPath = new Path();
 
 	private final int COLOR_ORANGE = 0xFFFD9727;
 	private final String textString = "16:00 – 16:30";

@@ -95,17 +95,12 @@ public class DiffreView extends View {
 	}
 
 	private void computePaths() {
-		computeCroppedProgressPath();
-		computeCroppedTextPath();
-	}
-
-	private void computeCroppedProgressPath() {
 		setRectPath(progressPath, 0, 0, width * percent, height);
-		croppedProgressPath.op(progressPath, textPath, Path.Op.DIFFERENCE);
-		croppedProgressPath.op(strokePath, Path.Op.INTERSECT);
-	}
 
-	private void computeCroppedTextPath() {
+		croppedProgressPath.set(progressPath);
+		croppedProgressPath.op(textPath, Path.Op.DIFFERENCE);
+		croppedProgressPath.op(strokePath, Path.Op.INTERSECT);
+
 		croppedTextPath.op(textPath, progressPath, Path.Op.DIFFERENCE);
 	}
 

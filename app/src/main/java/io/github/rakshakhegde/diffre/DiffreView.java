@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -36,7 +37,8 @@ public class DiffreView extends View {
 	private final String textString = "16:00 – 16:30";
 	private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	private final float radius;
-	private final int textPadding;
+	private final int horizontalTextPadding;
+	private final int verticalTextPadding;
 	private final Rect textBounds = new Rect();
 	private final Path progressPath = new Path();
 
@@ -57,11 +59,16 @@ public class DiffreView extends View {
 		final int paintTextSize = res.getDimensionPixelSize(R.dimen.paintTextSize);
 		paint.setTextSize(paintTextSize);
 
-		textPadding = res.getDimensionPixelSize(R.dimen.paintTextPadding);
+		horizontalTextPadding = res.getDimensionPixelSize(R.dimen.paintHorizontalTextPadding);
+		verticalTextPadding = res.getDimensionPixelSize(R.dimen.paintVerticalTextPadding);
 
 		radius = res.getDimensionPixelSize(R.dimen.paintRadius);
 
 		paint.setTextAlign(Paint.Align.CENTER);
+		paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+
+		final float strokeWidth = res.getDimensionPixelSize(R.dimen.paintStrokeWidth);
+		paint.setStrokeWidth(strokeWidth);
 	}
 
 	public static Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
@@ -84,8 +91,8 @@ public class DiffreView extends View {
 		final int textWidth = textBounds.width();
 		final int textHeight = textBounds.height();
 
-		width = textWidth + textPadding;
-		height = textHeight + textPadding;
+		width = textWidth + horizontalTextPadding;
+		height = textHeight + verticalTextPadding;
 
 		final int cx = width / 2;
 		final int cy = (height + textHeight) / 2;

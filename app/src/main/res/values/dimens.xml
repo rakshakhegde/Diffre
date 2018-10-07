@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<dimen name="paintTextSize">18sp</dimen>
-	<dimen name="paintTextPadding">32dp</dimen>
-	<dimen name="paintRadius">10dp</dimen>
+	<dimen name="paintTextSize">28sp</dimen>
+	<dimen name="paintHorizontalTextPadding">64dp</dimen>
+	<dimen name="paintVerticalTextPadding">48dp</dimen>
+	<dimen name="paintRadius">1000dp</dimen>
+	<dimen name="paintStrokeWidth">3dp</dimen>
 </resources>

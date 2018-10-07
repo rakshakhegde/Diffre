@@ -80,10 +80,10 @@ public class DiffreView extends View {
 		width = textWidth + horizontalTextPadding;
 		height = textHeight + verticalTextPadding;
 
-		final int cx = width / 2;
-		final int cy = (height + textHeight) / 2;
+		final int midWidth = width / 2;
+		final int baseline = (height + textHeight) / 2;
 
-		paint.getTextPath(textString, 0, textString.length(), cx, cy, textPath);
+		paint.getTextPath(textString, 0, textString.length(), midWidth, baseline, textPath);
 
 		setRoundRectPath(strokePath, 0, 0, width, height, radius);
 

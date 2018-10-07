@@ -5,7 +5,7 @@ android {
 	buildToolsVersion "27.0.3"
 	defaultConfig {
 		applicationId "io.github.rakshakhegde.diffre"
-		minSdkVersion 9
+		minSdkVersion 19
 		targetSdkVersion 25
 		versionCode 1
 		versionName "1.0"

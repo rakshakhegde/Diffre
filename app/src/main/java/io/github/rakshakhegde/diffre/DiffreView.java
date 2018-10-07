@@ -26,8 +26,9 @@ public class DiffreView extends View {
 	private int width;
 	private int height;
 	private float percent = 0.1F;
-	private Path strokePath = new Path();
 
+	private Path strokePath = new Path();
+    private final Path progressPath = new Path();
 	private final Path textPath = new Path();
 	private final Path croppedProgressPath = new Path();
 	private final Path croppedTextPath = new Path();
@@ -39,7 +40,6 @@ public class DiffreView extends View {
 	private final int horizontalTextPadding;
 	private final int verticalTextPadding;
 	private final Rect textBounds = new Rect();
-	private final Path progressPath = new Path();
 
 
 	public DiffreView(Context context) {

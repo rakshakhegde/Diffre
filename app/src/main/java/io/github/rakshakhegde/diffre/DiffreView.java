@@ -27,10 +27,10 @@ public class DiffreView extends View {
 	private int height;
 	private float percent = 0.1F;
 
-	private Path strokePath = new Path();
+	private final Path strokePath = new Path();
     private final Path progressPath = new Path();
-	private final Path textPath = new Path();
 	private final Path croppedProgressPath = new Path();
+	private final Path textPath = new Path();
 	private final Path croppedTextPath = new Path();
 
 	private final int COLOR_ORANGE = 0xFFFD9727;
@@ -85,7 +85,7 @@ public class DiffreView extends View {
 
 		paint.getTextPath(textString, 0, textString.length(), cx, cy, textPath);
 
-		strokePath = getRoundRectPath(0, 0, width, height, radius);
+		setRoundRectPath(strokePath, 0, 0, width, height, radius);
 
 		computePaths();
 
@@ -128,16 +128,15 @@ public class DiffreView extends View {
 		invalidate();
 	}
 
-	private Path getRoundRectPath(float left, float top, float right, float bottom, float radius) {
-		Path roundRectPath = new Path();
-		rectF.set(left, top, right, bottom);
-		roundRectPath.addRoundRect(rectF, radius, radius, Path.Direction.CW);
-		return roundRectPath;
-	}
-
 	private void setRectPath(Path path, float left, float top, float right, float bottom) {
 		rectF.set(left, top, right, bottom);
 		path.rewind();
 		path.addRect(rectF, Path.Direction.CW);
+	}
+
+	private void setRoundRectPath(Path path, float left, float top, float right, float bottom, float radius) {
+		rectF.set(left, top, right, bottom);
+		path.rewind();
+		path.addRoundRect(rectF, radius, radius, Path.Direction.CW);
 	}
 }

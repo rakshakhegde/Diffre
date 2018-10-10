@@ -69,6 +69,8 @@ public class DiffreView extends View {
 
 		final float strokeWidth = res.getDimensionPixelSize(R.dimen.paintStrokeWidth);
 		paint.setStrokeWidth(strokeWidth);
+
+		paint.setColor(COLOR_ORANGE);
 	}
 
 	@Override
@@ -106,9 +108,6 @@ public class DiffreView extends View {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		super.onDraw(canvas);
-
-		paint.setColor(COLOR_ORANGE);
 		paint.setStyle(Paint.Style.STROKE);
 		canvas.drawPath(strokePath, paint);
 
